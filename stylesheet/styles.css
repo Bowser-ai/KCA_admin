@@ -1,0 +1,51 @@
+li {
+  list-style: none;
+}
+
+button+button {
+  margin: 10px;
+}
+
+.card {
+  background: #e8d8db;
+}
+
+.deleted {
+  background-color: #FF0000;
+}
+
+.filiaal-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.filiaal-key {
+  font-size: 18pt;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.filiaal-value {
+  font-size: 16pt;
+}
+
+.filiaalinvoer-container {
+  font-size: 14pt;
+}
+
+.filiaal-deleted {
+  font-size: 14pt;
+  color:red;
+}
+
+.filiaal-added {
+  font-size: 14pt;
+  color:green;
+}
+
+.add-filiaal-form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 80px 10px 0 10px;
+}

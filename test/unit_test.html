@@ -1,0 +1,59 @@
+<style>
+  .pass {
+    color : green;
+  }
+  .fail {
+    color : red;
+  }
+</style>
+
+<script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-database.js"></script>
+<script src="../scripts/firebase.js"></script>
+<script src="../scripts/models/filialenModel.js"></script>
+<script src="../scripts/Ui/filiaalInvoer.js"></script>
+
+</script>
+
+<script charset="utf-8">
+  window.onload = function() {
+    var results = document.createElement('ul');
+    var test_suite = document.getElementById('test');
+    test_suite.appendChild(results);
+
+    function assert(value, desc) {
+      'use strict';
+
+      var result = document.createElement('li');
+      value ? result.className = 'pass' : result.className = 'fail';
+      var description = document.createTextNode(desc);
+      result.appendChild(description);
+      return result;
+    }
+
+    var test = assert(firebase, "firebase active?");
+    var test2 = assert(database, 'realtime db online');
+
+    var filiaal_model = new Models.FilialenModel(database);
+    var test3 = assert(filiaal_model instanceof Models.FilialenModel, 'filialenmodel exists');
+
+    filiaal_model.getFiliaalByNumber(183).then(function (value) {
+      var test4 = assert(value.filiaalnummer === 183, 'data retrieved from db');
+      results.appendChild(test4);
+    });
+
+    var input = document.createElement('input');
+    var input_view = new UI.InputView(input_view);
+    var test5 = assert(input_view instanceof UI.InputView, 'input view created')
+
+    results.appendChild(test);
+    results.appendChild(test2);
+    results.appendChild(test3);
+    results.appendChild(test5);
+  };
+</script>
+
+
+<div id=test>
+
+</div>
